@@ -50,9 +50,9 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
-  const sum = a + b + c;
-  const prod = a * b * c;
-  return [sum, prod, `${a} and ${b} and ${c} sum to ${sum}.`, `The product of ${a} and ${b} and ${c} is ${prod}.`];
+  const sumResult = sum(sum(a,b)[0],c)[0];
+  const prod = multiply(multiply(a,b)[0],c)[0];
+  return [sumResult, prod, `${a} and ${b} and ${c} sum to ${sumResult}.`, `The product of ${a} and ${b} and ${c} is ${prod}.`];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
@@ -74,11 +74,11 @@ Test this function by hand in the console to get it working, and when you think 
 let testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) { //eslint-disable-line
-  let sum = 0;
+  let result = 0;
   for (let i of sumArr) {
-    sum += i;
+    result = sum(result,i)[0];
   }
-  return [sum, `${sumArr} was passed in as an array of numbers, and ${sum} is their sum.`];
+  return [result, `${sumArr} was passed in as an array of numbers, and ${result} is their sum.`];
 }
 
 // Here is the test for sumArray(); uncomment it to run it
@@ -99,11 +99,15 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(multArr) { //eslint-disable-line
-
+  let result = 1;
+  for (let i of multArr) {
+    result = multiply(result,i)[0];
+  }
+  return [result, `The numbers ${multArr} have a product of ${result}.`];
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray(testArray);
+testMultiplyArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 
